@@ -13,6 +13,6 @@
   Stderr:
 
   Doing the following, resolved the issue on my machine
-  Disabled Hyper V in Contro Panel-->Program and Features -->Turn Windows Feature on or off
-  Made sure that Docker service was stopped under Processes in Task Manager.
-  Deleted .vagrant.d, .VirtualBox, virtual box created under VirtualBox VMs from c:/users/<user>
+	* Disabled Hyper V in Contro Panel-->Program and Features -->Turn Windows Feature on or off
+	* Made sure that Docker service was stopped under Processes in Task Manager.
+	* Deleted .vagrant.d, .VirtualBox, virtual box created under VirtualBox VMs from c:/users/<user>
