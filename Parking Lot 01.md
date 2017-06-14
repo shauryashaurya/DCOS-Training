@@ -7,6 +7,7 @@
 * If you are using Win10 OS then make sure "Trusted Execution" checkbox is enabled under Virtulization Support in bios setting.
 
 * while running vagrant up, the following error was seen.
+
 	![ErrorVagrantUp](/technical issues encountered by class during session/win10_error_images/Error_vagrant_up.png)
   
   There was an error while executing `VBoxManage`, a CLI used by Vagrant
