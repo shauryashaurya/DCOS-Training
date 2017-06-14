@@ -28,5 +28,5 @@ After cloning the minitwit repo.Update the following two files in the
 # Win 10
 
 I presume since docker is running as aprt of the host machine,The url should be
-	http://<hostMachineIp>:8081
+	http://`<hostMachineIp>`:8081
 
