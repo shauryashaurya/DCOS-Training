@@ -8,7 +8,7 @@
 
 * while running vagrant up, the following error was seen.
 
-![ErrorVagrantUp](technical issues encountered by class during session/win10_error_images/Error_vagrant_up.png)
+![ErrorVagrantUp](images/win10_error_images/Error_vagrant_up.png)
   
   There was an error while executing `VBoxManage`, a CLI used by Vagrant
   for controlling VirtualBox. The command and stderr is shown below.
