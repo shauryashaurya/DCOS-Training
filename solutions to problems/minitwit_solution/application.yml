@@ -1,0 +1,13 @@
+---
+server:
+  port: 8080
+
+spring:
+  datasource:
+    #url: jdbc:hsqldb:hsql://localhost/xdb
+    #username: sa
+    #password: ''
+    platform: hsqldb
+    #schema: classpath*:/schema-${platform}.sql
+    #data: classpath*:/test-data.sql
+    initialize: true
