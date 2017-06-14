@@ -30,3 +30,5 @@
 	We've seen that these lines are at the top of all sample Vagrant files.
 	These lines are not mandatory for the working of Vagrant itself (they are just comments, as far as Vagrant is concerned)
 	These lines are called 'modelines' and inform a vi or emacs editor of the language and syntax being used in the file.
+
+when switching back from docker lab to DCOS on windows, disable HyperV again.
