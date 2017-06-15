@@ -63,3 +63,13 @@ ssh -t vagrant@jskh
 to fire a `dcos.exe` command such as `dcos auth login` prefix the command with `'winpty'`
 so the command should look like:
 `winpty dcos auth login`
+
+
+---
+
+Here's the command to view zookeeper logs (though it's not a part of the present session)
+
+```journalctl -u dcos-exhibitor -b```
+
+(ssh into the master before you fire this)
+
