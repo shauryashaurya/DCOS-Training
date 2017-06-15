@@ -78,4 +78,6 @@ Here's the command to view zookeeper logs (though it's not a part of the present
 To see Mesos logs.
 http://m1.dcos/mesos/#/
 
+To see Marathon
+http://m1.dcos/marathon/ui/#/apps
 
