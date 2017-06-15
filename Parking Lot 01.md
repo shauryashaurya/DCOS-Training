@@ -95,9 +95,9 @@ You can find your public agent IP by running this command from your terminal. Th
 ```
 for id in $(dcos node --json | jq --raw-output '.[] | select(.attributes.public_ip == "true") | .id'); do dcos node ssh --option StrictHostKeyChecking=no --option LogLevel=quiet --master-proxy --mesos-id=$id "curl -s ifconfig.co" ; done 2>/dev/null
 ```
-Another option to run after finding the id manually
+Another option to run ssh coomand after finding the id manually from command : dcos node --json | jq --raw-output .[]
 ```
-dcos node ssh --option StrictHostKeyChecking=no --master-proxy --mesos-id=3b5670d2-11f9-4d09-b254-6a6009b1f128-S4
+dcos node ssh --option StrictHostKeyChecking=no --master-proxy --mesos-id=<ID>
 ```
 
 Here is an example where the public IP address is `52.39.29.79`:
