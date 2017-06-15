@@ -108,4 +108,24 @@ for id in $(dcos node --json | jq --raw-output '.[] | select(.attributes.public_
 ```
 
 
+---
+setup the following parameters for the marathon load balancer, save these in a json file (say `marathon_lb_install.json`)
+```
+{
+  "marathon-lb":{
+    "name":"marathon-lb-internal",
+    "haproxy-group":"internal",
+    "bind-http-https":false,
+    "role":""
+  }
+}
+```
+then run this command on the CLI to install it.
+```
+dcos package install --options=[filename].json marathon-lb
+```
+so in our example, you'd fire the command:
+```
+dcos package install --options=marathon_lb_install.json marathon-lb
+```
 
