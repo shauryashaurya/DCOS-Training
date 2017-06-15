@@ -41,3 +41,25 @@
 	These lines are called 'modelines' and inform a vi or emacs editor of the language and syntax being used in the file.
 
 * When switching back from docker lab to DCOS on windows, disable HyperV again.
+
+* Error when starting DC/OS cluster:
+```
+Job for dcos-setup.service failed because the control process exited with error code. See "systemctl status dcos-setup.service" and "journalctl -xe" for details.
+```
+
+---
+
+dcos auth login
+
+use the link to fetch the token and login to the CLI
+
+then use 
+
+ssh -t vagrant@jskh 
+
+---
+
+* In windows 7, when using the git bash or mingw shell,
+to fire a `dcos.exe` command such as `dcos auth login` prefix the command with `'winpty'`
+so the command should look like:
+`winpty dcos auth login`
