@@ -73,3 +73,9 @@ Here's the command to view zookeeper logs (though it's not a part of the present
 
 (ssh into the master before you fire this)
 
+---
+
+To see Mesos logs.
+http://m1.dcos/mesos/#/
+
+
