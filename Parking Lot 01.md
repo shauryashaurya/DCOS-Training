@@ -81,3 +81,27 @@ http://m1.dcos/mesos/#/
 To see Marathon
 http://m1.dcos/marathon/ui/#/apps
 
+
+# Finding a Public Agent IP
+**Prerequisites**
+
+- DC/OS is installed with at least 1 master and public agent node
+- DC/OS CLI 0.4.6 or later
+- [jq](https://github.com/stedolan/jq/wiki/Installation)
+- SSH configured
+
+You can find your public agent IP by running this command from your terminal. This command SSHs to your cluster to obtain cluster information and then queries [ifconfig.co](https://ifconfig.co/) to determine your public IP address.
+
+```
+for id in $(dcos node --json | jq --raw-output '.[] | select(.attributes.public_ip == "true") | .id'); do dcos node ssh --option StrictHostKeyChecking=no --option LogLevel=quiet --master-proxy --mesos-id=$id "curl -s ifconfig.co" ; done 2>/dev/null
+```
+
+Here is an example where the public IP address is `52.39.29.79`:
+
+```
+for id in $(dcos node --json | jq --raw-output '.[] | select(.attributes.public_ip == "true") | .id'); do dcos node ssh --option StrictHostKeyChecking=no --option LogLevel=quiet --master-proxy --mesos-id=$id "curl -s ifconfig.co" ; done 2>/dev/null
+52.39.29.79
+```
+
+
+
