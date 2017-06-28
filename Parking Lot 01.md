@@ -73,3 +73,59 @@ Here's the command to view zookeeper logs (though it's not a part of the present
 
 (ssh into the master before you fire this)
 
+---
+
+To see Mesos logs.
+http://m1.dcos/mesos/#/
+
+To see Marathon
+http://m1.dcos/marathon/ui/#/apps
+
+
+# Finding a Public Agent IP
+**Prerequisites**
+
+- DC/OS is installed with at least 1 master and public agent node
+- DC/OS CLI 0.4.6 or later
+- [jq](https://github.com/stedolan/jq/wiki/Installation)
+- SSH configured
+
+You can find your public agent IP by running this command from your terminal. This command SSHs to your cluster to obtain cluster information and then queries [ifconfig.co](https://ifconfig.co/) to determine your public IP address.
+
+```
+for id in $(dcos node --json | jq --raw-output '.[] | select(.attributes.public_ip == "true") | .id'); do dcos node ssh --option StrictHostKeyChecking=no --option LogLevel=quiet --master-proxy --mesos-id=$id "curl -s ifconfig.co" ; done 2>/dev/null
+```
+Another option to run ssh coomand after finding the id manually from command : dcos node --json | jq --raw-output .[]
+```
+dcos node ssh --option StrictHostKeyChecking=no --master-proxy --mesos-id=<ID>
+```
+
+Here is an example where the public IP address is `52.39.29.79`:
+
+```
+for id in $(dcos node --json | jq --raw-output '.[] | select(.attributes.public_ip == "true") | .id'); do dcos node ssh --option StrictHostKeyChecking=no --option LogLevel=quiet --master-proxy --mesos-id=$id "curl -s ifconfig.co" ; done 2>/dev/null
+52.39.29.79
+```
+
+
+---
+setup the following parameters for the marathon load balancer, save these in a json file (say `marathon_lb_install.json`)
+```
+{
+  "marathon-lb":{
+    "name":"marathon-lb-internal",
+    "haproxy-group":"internal",
+    "bind-http-https":false,
+    "role":""
+  }
+}
+```
+then run this command on the CLI to install it.
+```
+dcos package install --options=[filename].json marathon-lb
+```
+so in our example, you'd fire the command:
+```
+dcos package install --options=marathon_lb_install.json marathon-lb
+```
+
